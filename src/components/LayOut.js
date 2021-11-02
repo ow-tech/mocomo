@@ -1,5 +1,5 @@
 import React, {useState}from 'react';
-import {withGoogleMap, withScriptjs} from 'react-google-maps';
+import {Marker} from 'react-google-maps';
 // import GoogleMap from 'react-google-maps';
 import Map from './Maps'
 
@@ -7,7 +7,18 @@ import { Layout, Menu, Breadcrumb, Row, Col  } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
+const covidData = [
+  {id:"kasarani",
+  cordinates:[-1.228440,36.910700]
+  },
+  {id:"langata",
+  cordinates:[-1.345570, 36.742480]},
+  {id:"Westlands",
+  cordinates:[1.265190, 36.804770]},
+  {id:"zimmerman",
+  cordinates:[-1.285790, 36.820030]},
 
+]
 
 
 const LayOut = () =>{
@@ -38,7 +49,9 @@ const LayOut = () =>{
         containerElement = {<div style={{ height: `400px` }} />}
         mapElement = {<div style={{ height: `100%` }} />}
 
-       />
+       >
+        
+       </Map>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}> ©2021</Footer>

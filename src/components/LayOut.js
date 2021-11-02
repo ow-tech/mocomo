@@ -1,9 +1,11 @@
 import React, {useState}from 'react';
-import {Marker} from 'react-google-maps';
+// import {Marker} from 'react-google-maps';
 // import GoogleMap from 'react-google-maps';
 import Map from './Maps'
+import Card from './Cards/Cards'
 
-import { Layout, Menu, Breadcrumb, Row, Col  } from 'antd';
+import { Layout, Menu, Breadcrumb, Divider, Space } from 'antd';
+import Cards from './Cards/Cards';
 
 const { Header, Content, Footer } = Layout;
 
@@ -52,6 +54,9 @@ const LayOut = () =>{
        >
         
        </Map>
+       <Divider/>
+    
+            <Cards/>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}> ©2021</Footer>

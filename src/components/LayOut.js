@@ -2,10 +2,9 @@ import React, {useState}from 'react';
 // import {Marker} from 'react-google-maps';
 // import GoogleMap from 'react-google-maps';
 import LeaFletMap from './LeaFletMap';
-import Card from './Cards/Cards'
+import Chart from './Charts/Chart.js';
 
-import { Layout, Menu, Divider, Row, Col} from 'antd';
-import Cards from './Cards/Cards';
+import { Layout, Menu, Divider} from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
@@ -48,21 +47,13 @@ const LayOut = () =>{
 					</Header>
 					<Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
 					<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-						{/* <Map
-							googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_API_KEY}`}
-							loadingElement= {<div style={{ height: `100%` }} />}
-							containerElement = {<div style={{ height: `400px` }} />}
-							mapElement = {<div style={{ height: `100%` }} />}
-
-						>
-							
-						</Map> */}
 						
-							<LeaFletMap/>
+						<LeaFletMap/>
 						
 						<Divider/>
 						
-								<Cards/>
+						<Chart
+					/>
 					</div>
 				</Content>
 			<Footer style={{ textAlign: 'center' }}> ©2021</Footer>

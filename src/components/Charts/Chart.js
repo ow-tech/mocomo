@@ -1,4 +1,5 @@
 import React from 'react';
+import {Divider, Row, Col, Card} from "antd"
 import { PieChart, Pie, Tooltip, ResponsiveContainer,  ScatterChart,
     Scatter,
     XAxis,
@@ -8,6 +9,7 @@ import { PieChart, Pie, Tooltip, ResponsiveContainer,  ScatterChart,
     Legend,BarChart,Bar,Cell, ReferenceLine } from 'recharts';
 
 function Chart() {
+    const { Meta } = Card;
 
     const data = [
         {
@@ -89,61 +91,93 @@ const datat = [
 
         
     return (
-        <div style={{textAlign:"center", display:"flex", justifyContent:"space-between",}}>
-         <ResponsiveContainer width="100%" height={400}>
-            <PieChart width={400} height={400}>
-            <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />
-            <Pie data={data} dataKey="value" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#82ca9d" label />
-            <Tooltip />
-            </PieChart>
-            {/* <Tooltip/> */}
-      </ResponsiveContainer>
-        
-        {/* second chart */}
-        <ResponsiveContainer width="50%" height={400}>
-        <ScatterChart
-          width={500}
-          height={400}
-          margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid />
-          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
-          <ZAxis type="number" range={[100]} />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-          <Legend />
-          <Scatter name="A school" data={data01} fill="#8884d8" line shape="cross" />
-          <Scatter name="B school" data={data02} fill="#82ca9d" line shape="diamond" />
-        </ScatterChart>
-      </ResponsiveContainer>
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart
-          width={500}
-          height={300}
-          data={datat}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <ReferenceLine y={0} stroke="#000" />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
-</div>
+        // <div style={{textAlign:"center", display:"flex", justifyContent:"space-between",}}>
+             <Row justify="center">
+                <Col  xs={24} xl={8}>
+                    <Card
+                        hoverable
+                        >
+                             <Meta title="Third Chart" description="commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto" />
+                            <ResponsiveContainer width="100%" height={400}>
+                                    <PieChart width={400} height={400}>
+                                    <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />
+                                    <Pie data={data} dataKey="value" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#82ca9d" label />
+                                    <Tooltip />
+                                    </PieChart>
+                                    {/* <Tooltip/> */}
+                            </ResponsiveContainer>
+
+                        </Card>
+                </Col>
+                <Col  xs={24} xl={8}>
+                    <Card
+                            hoverable
+                        >
+                        <Meta title="Second Chart" description="Lorem ipsum dolor sit               amet                              consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint" />
+                         {/* second chart */}
+                                <ResponsiveContainer width="100%" height={400}>
+                                <ScatterChart
+                                width={500}
+                                height={400}
+                                margin={{
+                                    top: 20,
+                                    right: 20,
+                                    bottom: 20,
+                                    left: 20,
+                                }}
+                                >
+                                <CartesianGrid />
+                                <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+                                <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+                                <ZAxis type="number" range={[100]} />
+                                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                                <Legend />
+                                <Scatter name="A school" data={data01} fill="#8884d8" line shape="cross" />
+                                <Scatter name="B school" data={data02} fill="#82ca9d" line shape="diamond" />
+                                </ScatterChart>
+                            </ResponsiveContainer>
+                    </Card>
+                </Col>
+                <Col  xs={24} xl={8}>
+                <Card
+                        hoverable
+                    >
+                        <Meta title="Third Chart" description="commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto" />
+                        <ResponsiveContainer width="100%" height={400}>
+                            <BarChart
+                            width={500}
+                            height={300}
+                            data={datat}
+                            margin={{
+                                top: 5,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                            >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <ReferenceLine y={0} stroke="#000" />
+                            <Bar dataKey="pv" fill="#8884d8" />
+                            <Bar dataKey="uv" fill="#82ca9d" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </Card>
+                </Col>
+               
+                
+            </Row>
+         
+
+    
+       
+
+
+      
+// </div>
     )
 }
 

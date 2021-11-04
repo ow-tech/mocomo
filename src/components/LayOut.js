@@ -5,6 +5,7 @@ import LeaFletMap from './LeaFletMap';
 import Chart from './Charts/Chart.js';
 
 import { Layout, Menu, Divider} from 'antd';
+import logo from '../logo/upandelogo.svg';
 
 const { Header, Content, Footer } = Layout;
 
@@ -31,11 +32,14 @@ const LayOut = () =>{
     return (
         <>
 			<Layout>
-				<Header  >
-					<div className="logo" />
+				<Header className="header" >
+						
 					{/* <Row>
 						<Col> */}
 								<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{display:"flex"}}>
+								<Menu.Item  >
+									<img src={logo} style={{height:"40px", width:"40px", backgroundColor:"skyblue"}}/>
+								</Menu.Item>
 								
 								<Menu.Item key="1" style={rightStyle}>Home</Menu.Item>
 								{/* <Menu.Item key="2"style={rightStyle}>nav 2</Menu.Item> */}
@@ -50,7 +54,7 @@ const LayOut = () =>{
 						
 						<LeaFletMap/>
 						
-						<Divider/>
+						<Divider style={{'background-color':'darkBlue', "size":"5px"}}/>
 						
 						<Chart
 					/>

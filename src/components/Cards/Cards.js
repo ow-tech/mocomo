@@ -32,43 +32,6 @@ function Cards() {
                
                 
             </Row>
-            {/* </Space> */}
-            {/* <Row >
-                <Space>
-                <Col xs={24} xl={8}>
-                        <Card
-                        hoverable
-                        style={{ width: 240 }}
-                    >
-                        <Meta title="Europe Street beat" description="www.instagram.com" />
-                    </Card>
-                </Col>
-                <Col xs={24} xl={8}>
-                        <Card
-                        hoverable
-                        style={{ width: 240 }}
-                    >
-                        <Meta title="Europe Street beat" description="www.instagram.com" />
-                    </Card>
-                </Col >
-                <Col xs={24} xl={8}>
-                        <Card
-                        hoverable
-                        style={{ width: 240 }}
-                    >
-                        <Meta title="Europe Street beat" description="www.instagram.com" />
-                    </Card>
-                </Col>
-                <Col xs={24} xl={8}>
-                        <Card
-                        hoverable
-                        style={{ width: 240 }}
-                    >
-                        <Meta title="Europe Street beat" description="www.instagram.com" />
-                    </Card>
-                </Col>
-                </Space>
-            </Row> */}
         </div>
     )
 }

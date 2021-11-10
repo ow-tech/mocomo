@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-function LeaFletMap() {
+function LeaFletMap(props) {
+    const [selectedDateData, setSelectedDateData] = useState([])
+console.log(props.fetchedData)
+
+    // props.fetchedData.forEach(d => {d.date= d.date.split("-").reverse().join("-")})
+    // const filteredData = props.fetchedData.filter(data => 
+    //      data.date=== "18-06-2021");
+    // setSelectedDateData(filteredData)
+
+
+    
+
+   
 
     const covidData = [
     {id:1,
@@ -19,27 +31,37 @@ function LeaFletMap() {
     info:"Covid cases in Zimmerman"},
   
   ]
+  console.log(selectedDateData)
     return (
       
         <>
-            <MapContainer center={[-1.292066, 36.821945]} zoom={10} scrollWheelZoom={true}>
-                <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {covidData.map(area=>(
-                      <Marker position={[area.cordinates[0], area.cordinates[1]]}>
-                      <Popup>
-                          {area.info}
-                      </Popup>
-                  </Marker>
+         <MapContainer center={[-0.0887848, 34.7651153]} zoom={10} scrollWheelZoom={false}>
+        <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+         {(props.fetchedData !=null || props.fetchedData !=undefined) && props.fetchedData.filter(data =>
+             data.status_result== "Negative").map(area => (
+                <div>
+                {(area.latitude !=null || area.latitude !=undefined) && (area.longitude !=null || area.longitude !=undefined) &&(
+                    <>
+                    <Marker position={[area.latitude, area.longitude]}>
+                    <Popup>
+                    {area.name}
+                    </Popup>
+                    </Marker>
+                    </>
+                )}
+                
+                </div>
 
-                ))}
-              
+             ))}
+
+        
             </MapContainer>
-            
-        </>
-    )
+        </>)
 }
 
 export default LeaFletMap
+
+

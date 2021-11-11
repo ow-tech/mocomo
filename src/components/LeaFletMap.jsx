@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import L from 'leaflet'
 
 function LeaFletMap(props) {
     const [selectedDateData, setSelectedDateData] = useState([])
@@ -31,7 +32,20 @@ console.log(props.fetchedData)
     info:"Covid cases in Zimmerman"},
   
   ]
-  console.log(selectedDateData)
+
+  function getColor(status) {
+  let customColor = "blue";
+
+  if (status =="Negative")
+    customColor = "green";
+  else if (status == "Positive")
+    customColor = "red";
+  
+  let blueMarker = new L.icon({
+    markerColor:customColor
+  });}
+
+
     return (
       
         <>
@@ -45,9 +59,10 @@ console.log(props.fetchedData)
                 <div>
                 {(area.latitude !=null || area.latitude !=undefined) && (area.longitude !=null || area.longitude !=undefined) &&(
                     <>
-                    <Marker position={[area.latitude, area.longitude]}>
+                   
+                    <Marker position={[area.latitude, area.longitude]} markerColor={()=>getColor(area.status_result)} >
                     <Popup>
-                    {area.name}
+                    {area.status_result}
                     </Popup>
                     </Marker>
                     </>

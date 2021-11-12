@@ -122,7 +122,7 @@ const data02 = [
                 <Card
                         hoverable
                     >
-                        <Meta title="Third Chart" description="commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto" />
+                        <Meta title="Bar Graph with from identified Test Areas" description="The data of several places done on different dates with varied results" />
                         <ResponsiveContainer width={1000} height={400}>
                             <BarChart
                             width={50}

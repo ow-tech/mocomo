@@ -4,7 +4,7 @@ import L from 'leaflet'
 
 function LeaFletMap(props) {
     const [selectedDateData, setSelectedDateData] = useState([])
-console.log(props.fetchedData)
+// console.log(props.fetchedData)
 
     // props.fetchedData.forEach(d => {d.date= d.date.split("-").reverse().join("-")})
     // const filteredData = props.fetchedData.filter(data => 
@@ -13,25 +13,25 @@ console.log(props.fetchedData)
 
 
     
-
+// Dummy data for testing
    
 
-    const covidData = [
-    {id:1,
-    cordinates:[-1.228440,36.910700],
-    info:"Covid cases in Kasarani"
-    },
-    {id:2,
-    cordinates:[-1.345570, 36.742480],
-    info:"Covid cases in Langata"},
-    {id:3,
-    cordinates:[1.265190, 36.804770],
-    info:"Covid cases in Utawala"},
-    {id:4,
-    cordinates:[-1.285790, 36.820030],
-    info:"Covid cases in Zimmerman"},
+//     const covidData = [
+//     {id:1,
+//     cordinates:[-1.228440,36.910700],
+//     info:"Covid cases in Kasarani"
+//     },
+//     {id:2,
+//     cordinates:[-1.345570, 36.742480],
+//     info:"Covid cases in Langata"},
+//     {id:3,
+//     cordinates:[1.265190, 36.804770],
+//     info:"Covid cases in Utawala"},
+//     {id:4,
+//     cordinates:[-1.285790, 36.820030],
+//     info:"Covid cases in Zimmerman"},
   
-  ]
+//   ]
 
   function getColor(status) {
   let customColor = "blue";
@@ -44,7 +44,6 @@ console.log(props.fetchedData)
   let blueMarker = new L.icon({
     markerColor:customColor
   });}
-
 
     return (
       
@@ -71,7 +70,6 @@ console.log(props.fetchedData)
                 </div>
 
              ))}
-
         
             </MapContainer>
         </>)

@@ -98,6 +98,7 @@ console.log(fetchedData)
 						<Divider/>
 						
 						<Chart
+						fetchedData={fetchedData}
 					/>
 					</div>
 				</Content>

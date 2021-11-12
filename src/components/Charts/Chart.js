@@ -1,28 +1,94 @@
-import React from 'react';
-import {Divider, Row, Col, Card} from "antd"
+import React, {useState, useEffect} from 'react';
+import { Row, Col, Card} from "antd"
 import { PieChart, Pie, Tooltip, ResponsiveContainer,  ScatterChart,
     Scatter,
     XAxis,
     YAxis,
     ZAxis,
     CartesianGrid,
-    Legend,BarChart,Bar,Cell, ReferenceLine } from 'recharts';
+    Legend,BarChart,Bar, ReferenceLine } from 'recharts';
 
-function Chart() {
+const Chart = (props)=> {
+    const [positive, setPositive] = useState(0);
+    const [negative, setNegative] = useState(0);
+    const [invalid, setInvalid] = useState(0);
+    const [brGraphData, setBrGraphData]=useState()
+
+  
+    useEffect(()=>{
+   
+    // looping through the data and counting test results for all the tests
+    if(props.fetchedData !== undefined && props.fetchedData.length > 0){
+    props.fetchedData.forEach(function(item) {
+    console.log(item.status_result)
+        if (item.status_result == "Positive") {
+            setPositive(positive =>(positive + 1))
+        } else if (item.status_result == "Negative") {
+            setNegative(negative=>(negative + 1))
+        } else {
+            setInvalid(invalid =>(invalid+ 1))
+        }
+    })}
+  
+   
+   
+},[props.fetchedData])
+
+let totalTests = positive + negative + invalid;
+
+// generating a set of location names to be used to loop through fetched data and assign each location name total
+// value of test_results
+    useEffect(()=>{
+        let setLocationNames = new Set();
+        props.fetchedData.map(function(item) {
+        setLocationNames.add(item.location_name)
+        console.log(setLocationNames)
+    })
+
+
+    //  nested loop to create object data as per setLocationNames
+    let barGraphArray = [];
+        let Positive =0;
+        let Negative =0;
+        let Invalid =0;
+     setLocationNames.forEach(function(item) {
+        props.fetchedData.forEach(function(i){
+               
+            if (i.location_name === item) {
+                if(i.status_result === "Positive"){
+                    Positive =Positive +1
+                } else if (i.status_result === "Negative"){
+                    Negative =Negative +1
+                }else{
+                    Invalid =Invalid +1
+                }
+            }
+     })
+        barGraphArray.push({name:item,
+        Positive:Positive,
+        Negative:Negative,
+        Invalid:Invalid})
+        
+        setBrGraphData(barGraphArray)
+    })
+    console.log(brGraphData)
+   
+},[props.fetchedData])
+
     const { Meta } = Card;
 
     const data = [
         {
-            name:"Kenya",
-            value:20000
+            name:"Positive",
+            value:positive
         },
         {
-            name:"Uganda",
-            value:5000000,
+            name:"Negative",
+            value:negative,
         },
         {
-            name:"Tanzania",
-            value:7000000,
+            name:"Invalid/Undefined",
+            value:invalid,
         }
     ]
 // second chart data
@@ -44,60 +110,52 @@ const data02 = [
 ];
 
 // third chart data
-const datat = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: -3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: -2000,
-      pv: -9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: -1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: -3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+
+
 
         
     return (
         // <div style={{textAlign:"center", display:"flex", justifyContent:"space-between",}}>
-             <Row justify="center">
+        <>
+             <Row justify="start">
                 <Col  xs={24} xl={8}>
+                <Card
+                        hoverable
+                    >
+                        <Meta title="Third Chart" description="commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto" />
+                        <ResponsiveContainer width={1000} height={400}>
+                            <BarChart
+                            width={50}
+                            height={100}
+                            data={brGraphData}
+                            margin={{
+                                top: 5,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                            >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <ReferenceLine y={0} stroke="#000" />
+                            <Bar dataKey="Positive" fill="#FF0000" />
+                            <Bar dataKey="Negative" fill="#82ca9d" />
+                            <Bar dataKey="Invalid" fill="#8884d8" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </Card>
+                </Col> 
+            </Row>
+        <Row justify="center">
+        <Col  xs={24} xl={8}>
                     <Card
                         hoverable
                         >
-                             <Meta title="Third Chart" description="commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto" />
+                             <Meta title={"Total Tests " + totalTests} description="This Pie is a representative of all the test done so far , with each sector representing status results" />
+                             
                             <ResponsiveContainer width="100%" height={400}>
                                     <PieChart width={400} height={400}>
                                     <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />
@@ -138,38 +196,8 @@ const datat = [
                             </ResponsiveContainer>
                     </Card>
                 </Col>
-                <Col  xs={24} xl={8}>
-                <Card
-                        hoverable
-                    >
-                        <Meta title="Third Chart" description="commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto" />
-                        <ResponsiveContainer width="100%" height={400}>
-                            <BarChart
-                            width={500}
-                            height={300}
-                            data={datat}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                            >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <ReferenceLine y={0} stroke="#000" />
-                            <Bar dataKey="pv" fill="#8884d8" />
-                            <Bar dataKey="uv" fill="#82ca9d" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </Col>
-               
-                
-            </Row>
+        </Row>
+    </>
          
 
     

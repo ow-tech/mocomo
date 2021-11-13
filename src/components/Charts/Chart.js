@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { Row, Col, Card} from "antd"
-import { PieChart, Pie, Tooltip, ResponsiveContainer,  ScatterChart,
-    Scatter,
+import { Row, Col, Card, Divider} from "antd"
+import { PieChart, Pie, Tooltip, ResponsiveContainer, 
     XAxis,
     YAxis,
     ZAxis,
@@ -119,10 +118,12 @@ const data02 = [
         <>
              <Row justify="start">
                 <Col  xs={24} xl={8}>
-                <Card
+                {/* <Card
                         hoverable
                     >
-                        <Meta title="Bar Graph with from identified Test Areas" description="The data of several places done on different dates with varied results" />
+                        <Meta /> */}
+                        <h3>Bar Graph with from identified Test Areas.
+                            <br/>The data of several places done on different dates with varied results</h3>
                         <ResponsiveContainer width={1000} height={400}>
                             <BarChart
                             width={50}
@@ -146,9 +147,10 @@ const data02 = [
                             <Bar dataKey="Invalid" fill="#8884d8" />
                             </BarChart>
                         </ResponsiveContainer>
-                    </Card>
+                    {/* </Card> */}
                 </Col> 
             </Row>
+            <Divider/>
         <Row justify="center">
         <Col  xs={24} xl={8}>
                     <Card
@@ -167,35 +169,7 @@ const data02 = [
 
                         </Card>
                 </Col>
-                <Col  xs={24} xl={8}>
-                    <Card
-                            hoverable
-                        >
-                        <Meta title="Second Chart" description="Lorem ipsum dolor sit               amet                              consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint" />
-                         {/* second chart */}
-                                <ResponsiveContainer width="100%" height={400}>
-                                <ScatterChart
-                                width={500}
-                                height={400}
-                                margin={{
-                                    top: 20,
-                                    right: 20,
-                                    bottom: 20,
-                                    left: 20,
-                                }}
-                                >
-                                <CartesianGrid />
-                                <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-                                <YAxis type="number" dataKey="y" name="weight" unit="kg" />
-                                <ZAxis type="number" range={[100]} />
-                                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                <Legend />
-                                <Scatter name="A school" data={data01} fill="#8884d8" line shape="cross" />
-                                <Scatter name="B school" data={data02} fill="#82ca9d" line shape="diamond" />
-                                </ScatterChart>
-                            </ResponsiveContainer>
-                    </Card>
-                </Col>
+                
         </Row>
     </>
          

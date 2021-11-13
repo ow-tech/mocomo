@@ -3,7 +3,7 @@ import { Row, Col, Card, Divider} from "antd"
 import { PieChart, Pie, Tooltip, ResponsiveContainer, 
     XAxis,
     YAxis,
-    ZAxis,
+   
     CartesianGrid,
     Legend,BarChart,Bar, ReferenceLine } from 'recharts';
 
@@ -41,7 +41,7 @@ let totalTests = positive + negative + invalid;
         let setLocationNames = new Set();
         props.fetchedData.map(function(item) {
         setLocationNames.add(item.location_name)
-        console.log(setLocationNames)
+        // console.log(setLocationNames)
     })
 
 
@@ -70,7 +70,7 @@ let totalTests = positive + negative + invalid;
         
         setBrGraphData(barGraphArray)
     })
-    console.log(brGraphData)
+    // console.log(brGraphData)
    
 },[props.fetchedData])
 
@@ -92,21 +92,7 @@ let totalTests = positive + negative + invalid;
     ]
 // second chart data
 
-const data01 = [
-  { x: 10, y: 30 },
-  { x: 30, y: 200 },
-  { x: 45, y: 100 },
-  { x: 50, y: 400 },
-  { x: 70, y: 150 },
-  { x: 100, y: 250 },
-];
-const data02 = [
-  { x: 30, y: 20 },
-  { x: 50, y: 180 },
-  { x: 75, y: 240 },
-  { x: 100, y: 100 },
-  { x: 120, y: 190 },
-];
+
 
 // third chart data
 

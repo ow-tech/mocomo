@@ -63,7 +63,7 @@ useEffect(()=>{
 	// console.log(fetchedData)
 
 })
-console.log(fetchedData)
+// console.log(fetchedData)
 
 
     return (
